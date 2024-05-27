@@ -1,17 +1,18 @@
 import socket
 import os
 
-HOST = '127.0.0.1'
+IP = '127.0.0.1'
+
 PORT = 12345
 
 sock = socket.socket()
-sock.connect((HOST, PORT))
+sock.connect((IP, PORT))
 print("Введите логин: ")
 try:
     while True:
         request = input('>')
         if request == '':
-            print("oops, None is not a command")
+            print("Oops, None is not a command")
             continue
         command, *args = request.split()
 
@@ -35,7 +36,6 @@ try:
             except:pass
 
         else:
-
             sock.send(request.encode())
             response = sock.recv(1024).decode()
 
